@@ -302,7 +302,6 @@ def balance_update(amount, balances, bet_issuer):
     return balances, betted_amount
 
 
-# add big blind mechanic
 
 
 def big_blind_mechanic(balances, button_bet_issuer):
@@ -329,7 +328,6 @@ def player_bet_mechanic(balances, betting_pool, bot_total_bet, player_total_bet,
 
     while True:
         if player_total_bet > bot_total_bet:
-            #send signal to bot for him to either call, raise or fold
             player_betting_amount = 0
             player_action = None
             break
@@ -537,7 +535,6 @@ def who_wins(round_info):
         winner = player
         return winner
     
-
     elif round_info['player hand strength'] < round_info['bot hand strength']:
         winner = bot
         return winner
@@ -691,8 +688,7 @@ while True:
         else:
             print('Please enter a valid input.')
             continue
-    
-    # Display loop
+          
 
 
     while game_end == False:
@@ -773,7 +769,6 @@ while True:
 
             time.sleep(delay)
 
-
             while betting_round_end == False: 
                 
                 log.info(f'Who bets: {who_bets}')
@@ -851,6 +846,6 @@ while True:
                 if player_input != 'p':
                     sys.exit()
                 round_end = True
-                    
+
 
 
