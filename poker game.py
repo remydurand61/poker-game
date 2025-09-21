@@ -129,7 +129,7 @@ def flush_checker(hand_suits, hand):
         suits_counter[suit] = suits_counter[suit] + 1
 
     if not suits_counter:
-        return False, None
+        return is_a_flush, flush_rank, suited_hand
 
     if 5 in suits_counter.values():
         is_a_flush = True
@@ -139,8 +139,8 @@ def flush_checker(hand_suits, hand):
 
         for i in range(len(suited_hand)):
             if suited_hand[i][1] != flush_suit:
-                suited_hand.remove(i)
-        for i in range(suited_hand):
+                suited_hand.remove(suited_hand[i])
+        for i in range(len(suited_hand)):
             if flush_rank < RANK_VALUES[suited_hand[i][0]]:
                 flush_rank = RANK_VALUES[suited_hand[i][0]]
 
@@ -347,7 +347,7 @@ def player_bet_mechanic(balances, betting_pool, bot_total_bet, player_total_bet,
                     if player_betting_amount != 0:
                         break
 
-                except TypeError:
+                except ValueError:
                     print('Please enter a correct number.')
                     
 
@@ -846,6 +846,7 @@ while True:
                 if player_input != 'p':
                     sys.exit()
                 round_end = True
+
 
 
 
